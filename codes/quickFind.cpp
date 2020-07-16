@@ -4,16 +4,17 @@
 #include <algorithm>
 #include<string>
 #include <cstring>
+#include<conio.h>
 
 using namespace std;
 
-using namespace std;
-
-class QuickFind{
-
+class QuickFind
+{
+ 
+    public:
     vector<int> components;
 
-    public:
+   
     QuickFind(int n){
         ///components = new int[n];
         for(int i = 0; i < n; i++){
@@ -48,7 +49,7 @@ class QuickFind{
 
 int main(){
 
-    QuickFind QF(10);
+  //  QuickFind QF(10);
     int option;
     int p,q;
 
@@ -64,17 +65,17 @@ int main(){
            // QF.Union(p,q);
           //  QF.display();
             break;
-            case 2 : cout<<"2. check"<<endl;
+            case 2 : cout<<"check"<<endl;
             break;
-            case 0 : cout<<"3. Exit"<<endl;
+            case 3 : cout<<"Exit"<<endl;
             break;
             default:
             cout<<"try diff option";
             break;
         }
        
-    }while(option != 0);
+    }while(option != 3);
     
-
+   // getch();
     return 0;
 }
