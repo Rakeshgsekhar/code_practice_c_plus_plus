@@ -69,10 +69,14 @@ class StackIMP{
         System.out.println("Status : "+stack.isEmpty());
 
         System.out.println("poped :"+stack.pop());
+        stack.display();
+        System.out.println("poped :"+stack.pop());
+        stack.display(); 
+        System.out.println("poped :"+stack.pop());
+        stack.display(); 
         System.out.println("poped :"+stack.pop());
         System.out.println("poped :"+stack.pop());
-        System.out.println("poped :"+stack.pop());
-        System.out.println("poped :"+stack.pop());
+        stack.display(); 
         System.out.println("poped :"+stack.pop());
 
         stack.display();
