@@ -31,15 +31,12 @@ public:
         }
         string open ="[",close ="]";
         string regesVal;
+        regex x("[/./g]");
+        regex alph("(/[a-z]?/)");
+        s = regex_replace(word,alph,"[\1]");
+        s = regex_replace(s,x,"[a-z]{1}");
+        cout<<s;
 
-        
-        for(int i = 0 ;i<word.length();i++){
-            if(isalpha(word[i]) || isdigit(word[i]) ){
-                s+=open+word[i]+ close;
-            }else if(word[i] == '.'){
-                s+="[a-z]{1}";
-            }
-        }
         regex r("("+s+")");
         for(it=dictionary.begin(); it<dictionary.end(); it++){
             string temp = *it;
