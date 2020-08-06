@@ -27,7 +27,7 @@ int main(){
     if(s.isPalindrome("1A man, a plan, a canal: Panama1")){
         cout<<"true"<<endl;
     }else{
-         cout<<"false"<<endl;
+        cout<<"false"<<endl;
     }
     
     return 0;

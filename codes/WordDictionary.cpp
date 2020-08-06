@@ -1,0 +1,76 @@
+#include <iostream>
+#include<vector> 
+#include<set>
+#include <regex>
+#include <algorithm>
+#include<string>
+#include <cstring>
+#include <unordered_map> 
+
+using namespace std;
+class WordDictionary {
+public:
+    /** Initialize your data structure here. */
+    vector<string> dictionary;
+    WordDictionary() {
+       vector<string> temp;
+       dictionary = temp;
+    }
+    
+    /** Adds a word into the data structure. */
+    void addWord(string word) {
+        dictionary.push_back(word);
+    }
+
+    /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
+    bool search(string word) {
+        vector<string>::iterator it;
+        string s;
+        if(dictionary.size() == 0 || word == ""){
+            return false;
+        }
+        string open ="[",close ="]";
+        string regesVal;
+
+        
+        for(int i = 0 ;i<word.length();i++){
+            if(isalpha(word[i]) || isdigit(word[i]) ){
+                s+=open+word[i]+ close;
+            }else if(word[i] == '.'){
+                s+="[a-z]{1}";
+            }
+        }
+        regex r("("+s+")");
+        for(it=dictionary.begin(); it<dictionary.end(); it++){
+            string temp = *it;
+            if(temp.length() == word.length()){
+                if(word == temp){
+                    return true;
+                } 
+                if(regex_match(*it,r)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
+
+int main(){
+    WordDictionary w ;
+    w.addWord("bad");
+    w.addWord("dad");
+    w.addWord("mad");
+
+    // regex r("([b][a-z]{1}[a-z]{1})");
+
+    // if(regex_match("baad",r)){
+    //     cout<<"true"<<endl;
+    // }else{
+    //      cout<<"false"<<endl;
+    // }
+     w.search("bad")?cout<<"true"<<endl : cout<<"false"<<endl;
+     w.search("ba.")? cout<<"true"<<endl : cout<<"false"<<endl;
+     w.search("b..d")? cout<<"true"<<endl : cout<<"false"<<endl;
+    return 0;
+}
