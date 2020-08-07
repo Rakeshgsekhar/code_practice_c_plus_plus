@@ -33,6 +33,8 @@ public:
         string regesVal;
         regex x("[/./g]");
         regex alph("(/[a-z]?/)");
+        int num = count(word.begin(),word.end(),'.');
+        cout<<num;
         s = regex_replace(word,alph,"[\1]");
         s = regex_replace(s,x,"[a-z]{1}");
         cout<<s;
