@@ -1,32 +1,22 @@
 class Solution:
     def modifyString(self, s):
-        memo = []
-        strs = [0]*len(s)
-        st = ord('a')
+        if len(s) == 1:
+            if s[0] == '?':
+                return 'a'
+        s = list(s)
         for i in range(len(s)):
             if s[i] == '?':
-                #st = ord('a')
-                #print(s[i+1])
-                #print(ord(s[i+1]))
-                #print(st)
-                #if i+1< len(s) and s[i+1] != '?' and st == ord(s[i+1]):
-                    #st+=2
-                #if i-1 >= 0 and st == ord(s[i-1]):
-                    #st = ord('a')
-                strs[i] = str(chr(st))
-                memo.append(i)
-                #st += 2
-            else:
-                strs[i] = s[i]
-                st = ord('a')
-
-        for i in range(1,len(strs)-1):
-            if strs[i-1] == strs[i]:
-                #if strs[i]
-                strs[i] = str(chr(ord(strs[i])+2))
-            if strs[i]
-        #print(strs)
-        return ('').join(strs)
+                for ch in 'acb':
+                    if i == 0 and s[i+1] != ch:
+                        s[i] = ch
+                        break
+                    if i == len(s) - 1 and s[i-1] != ch:
+                        s[i] = ch
+                        break
+                    if (i > 0 and i < len(s)-1) and s[i-1] != ch and s[i+1] != ch:
+                        s[i] = ch
+                        break
+        return ('').join(s)
 
 s = Solution()
 print (s.modifyString("?zs"))
