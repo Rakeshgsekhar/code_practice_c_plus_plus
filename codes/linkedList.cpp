@@ -108,8 +108,63 @@ Node * deleteKNoRefWithRec(Node* head,int val){
 
     return head;
 }
+
+Node * reverseLinkedList(Node* head){
+    Node* newHead = NULL;
+    while(head != NULL){
+        addAtBegining(&newHead,head->data);
+        head = head->next;
+    }
+
+    return newHead;
+}
+
+bool isPalindrom(Node* list1, Node* list2){
+     while(list1 != NULL && list2 != NULL){
+        if (list1->data != list2->data){
+            return false;
+        }
+        list1 = list1->next;
+        list2 = list2->next;
+    }
+    return true;
+}
 int main(){
 
+    // Node* head;
+    // Node* one = NULL;
+    // Node* two = NULL;
+    // Node* three = NULL;
+    // Node* four = NULL;
+    // Node* twentyThree = NULL;
+    // Node* threeone = NULL;
+    // Node* five = NULL;
+    // Node* threetwo = NULL;
+    // Node* six = NULL;
+    // Node* seven = NULL;
+
+    // one = new Node(); 
+    // two = new Node(); 
+    // three = new Node();
+    // four = new Node();
+    // twentyThree = new Node();
+    // threeone = new Node();
+    // five = new Node();
+    // threetwo = new Node();
+    // six = new Node(); 
+    // seven = new Node();
+
+
+    // one->data = 1;
+    // two->data =  2;
+    // three->data = 3;
+    // four->data = 4;
+    // twentyThree->data = 23;
+    // threeone->data = 3;
+    // five->data = 5;
+    // threetwo->data = 3;
+    // six->data =  6;
+    // seven->data = 7;
     Node* head;
     Node* one = NULL;
     Node* two = NULL;
@@ -138,12 +193,12 @@ int main(){
     two->data =  2;
     three->data = 3;
     four->data = 4;
-    twentyThree->data = 23;
-    threeone->data = 3;
-    five->data = 5;
-    threetwo->data = 3;
-    six->data =  6;
-    seven->data = 7;
+    twentyThree->data = 5;
+    threeone->data = 4;
+    five->data = 3;
+    threetwo->data = 2;
+    six->data =  1;
+    seven->data = 0;
 
     one->next = two;
     two->next = three;
@@ -162,44 +217,52 @@ int main(){
 
     Traverse(head);
     
-    addAtBegining(&head,23);
-    Traverse(head);
+    // addAtBegining(&head,23);
+    // Traverse(head);
 
-    addAtBegining(&head,23);
-    Traverse(head);
+    // addAtBegining(&head,23);
+    // Traverse(head);
 
-    addAtBegining(&head,23);
-    Traverse(head);
+    // addAtBegining(&head,23);
+    // Traverse(head);
 
-    addAtBegining(&head,20);
-    Traverse(head);
-    addAtBegining(&head,20);
-    Traverse(head);
+    // addAtBegining(&head,20);
+    // Traverse(head);
+    // addAtBegining(&head,20);
+    // Traverse(head);
     
-    addAtEnd(&head,23);
-    Traverse(head);
+    // addAtEnd(&head,23);
+    // Traverse(head);
     
-    addAtEnd(&head,23);
-    Traverse(head);
+    // addAtEnd(&head,23);
+    // Traverse(head);
 
-    addAtEnd(&head,20);
-    Traverse(head);
-    addAtEnd(&head,20);
-    Traverse(head);
+    // addAtEnd(&head,20);
+    // Traverse(head);
+    // addAtEnd(&head,20);
+    // Traverse(head);
     
-    addAtEnd(&head,23);
-    Traverse(head);
+    // addAtEnd(&head,23);
+    // Traverse(head);
 
-    deleteK(&head,23);
-    Traverse(head);
+    // deleteK(&head,23);
+    // Traverse(head);
 
 
-    Node* newHead = deleteKNoRef(head,3);
-    Traverse(newHead);
+    // Node* newHead = deleteKNoRef(head,3);
+    // Traverse(newHead);
 
 
     cout<<endl<<"Delete K from list nor Recurssion "<<endl<<"****************"<<endl;
-    Node* newHead1 = deleteKNoRefWithRec(head,20);
+    Node* newHead1 = deleteKNoRefWithRec(head,0);
     Traverse(newHead1);
+    head = newHead1;
+
+    cout<<endl<<"Reversed "<<endl<<"****************"<<endl;
+    Node* reversedList = reverseLinkedList(head);
+    Traverse(reversedList);
+
+    cout<<endl<<"Palindrom"<<endl;
+    cout<<(isPalindrom(head,reversedList)? "true":"false")<<endl;
     return 0;
 }
