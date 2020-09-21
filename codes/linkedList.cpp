@@ -129,6 +129,27 @@ bool isPalindrom(Node* list1, Node* list2){
     }
     return true;
 }
+
+
+bool isPalindromRecu(Node** left,Node* right){
+    if(right == NULL){
+        return true;
+    }
+
+    bool isPalin = isPalindromRecu(left,right->next);
+    if (isPalin == false){
+        return false;
+    }
+
+    bool isPlain1 = (right->data == (*left)->data);
+
+    *left = (*left)->next;
+    return isPlain1;
+}
+
+bool isPalindromUtil(Node* head){
+    return isPalindromRecu(&head,head);
+}
 int main(){
 
     // Node* head;
@@ -264,5 +285,8 @@ int main(){
 
     cout<<endl<<"Palindrom"<<endl;
     cout<<(isPalindrom(head,reversedList)? "true":"false")<<endl;
+
+    cout<<endl<<"Palindrom-Recursion"<<endl;
+    cout<<(isPalindromUtil(head)? "true":"false")<<endl;
     return 0;
 }
