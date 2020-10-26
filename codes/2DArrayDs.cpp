@@ -13,41 +13,36 @@ using namespace std;
 int hourglassSum(vector<vector<int>> arr) {
     // int k = 2;
     int maxSum = INT_MIN;
-    int j = 0,i = 0;
-    int subMatrix = 0;
-    int looping = 0;
-    while(subMatrix<4){
+    int subMatrixRow = 0;
+    int subMatrixCol = 0;
+    while(subMatrixRow<4){
         cout<<endl;
-            looping = 0;
-            while(looping < 4){
+            subMatrixCol = 0;
+            while(subMatrixCol < 4){
                 int tempSum = 0; 
-                for(int k = subMatrix;k<=subMatrix+2;k++){
-                    for(int m = looping;m<=looping+2;m++){
-                            if(k == subMatrix+1){
-                                if(k == subMatrix+1 && m == looping+1){
-                                    cout<<"  "<<arr[k][m]<<" ";
-                                    tempSum += arr[k][m];
-                                }
-                            }else{
-                                cout<<arr[k][m]<<" ";
+                for(int k = subMatrixRow;k<=subMatrixRow+2;k++){
+                    for(int m = subMatrixCol;m<=subMatrixCol+2;m++){
+                        if(k == subMatrixRow+1){
+                            if(k == subMatrixRow+1 && m == subMatrixCol+1){
+                                cout<<"  "<<arr[k][m]<<" ";
                                 tempSum += arr[k][m];
                             }
-                            
-                            
+                        }else{
+                            cout<<arr[k][m]<<" ";
+                            tempSum += arr[k][m];
+                        }  
                     }
-                    
-                     cout<<endl;
+                    cout<<endl;
                 }
                 cout<<endl;
                 if(tempSum > maxSum){
-                        maxSum =tempSum;
+                    maxSum =tempSum;
                 }
-                cout<<"temp sum"<<tempSum<<endl;
-                looping++;
+                cout<<"SUM OF SUB-MATRIC : "<<tempSum<<endl<<endl;
+                subMatrixCol++;
             }
             cout<<endl;
-
-        subMatrix++;
+        subMatrixRow++;
     }
     return maxSum;
 }
