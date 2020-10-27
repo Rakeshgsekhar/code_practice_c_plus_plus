@@ -63,12 +63,12 @@ void printArray(int a[],int n){
 }
 
 int main(){
-    int arr[] = {1,2,3,4,5,6,7,8,9};
+    int arr[] = {1,2,3,4,5};
     int n = sizeof(arr)/sizeof(arr[0]);
     printArray(arr,n);
-    leftRotate(arr,3,n);
+    leftRotate(arr,4,n);
     printArray(arr,n);
-    rightRotate(arr,3,n);
+    // rightRotate(arr,3,n);
     printArray(arr,n);
     return 0;
 }
