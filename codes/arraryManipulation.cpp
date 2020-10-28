@@ -27,51 +27,6 @@ long arrayManipulation(int n, vector<vector<int>> queries) {
     return largest;
 }
 
-bool compareInterval(vector<int>interval1 , vector<int>interval2){
-    return (interval1[0] < interval2[0]) ? true:false;
-}
-
-void Print_Vector(vector<int> Vec) 
-{ 
-    for (int i = 0; i < Vec.size(); i++) { 
-        cout << Vec[i] << " "; 
-    } 
-    cout << endl; 
-    return; 
-} 
-set<vector<int>> findOverLappingQueries(vector<vector<int>> queries){
-    set<vector<int>> result {};
-    vector<int> sumResult;
-    int max_ele = 0;
-    int n = queries.size();
-    sort(queries.begin(),queries.end(),compareInterval);
-
-    for(int i = 1;i<n;i++){
-        int sum = 0;
-        if(queries[i-1][1] > queries[i][0]){
-            result.insert(queries[i-1]);
-            result.insert(queries[i]);
-            sum = queries[i][2]+queries[i-1][2];
-            sumResult.push_back(sum);
-        }
-    }
-     cout<<endl<<"SET: "<< endl;
-    for (auto it = result.begin(); 
-         it != result.end(); 
-         it++) { 
-  
-        Print_Vector(*it); 
-    } 
-
-    cout<<"SUMS: "<< endl;
-    for(int i =0;i<sumResult.size();i++){
-        cout<<sumResult[i]<<" ";
-    }
-
-    return result;
-
-}
-
 long arrayManipulationMethodOptimized(int n, vector<vector<int>> queries) {
     long int max=0,x=0,sum;
     long int *a = new long int [n+1]();
