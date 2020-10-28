@@ -73,13 +73,19 @@ set<vector<int>> findOverLappingQueries(vector<vector<int>> queries){
 }
 
 long arrayManipulationMethodOptimized(int n, vector<vector<int>> queries) {
+    long int max=0,x=0,sum;
+    long int *a = new long int [n+1]();
+    for(vector<int>query:queries){
+        a[query[0]] += query[2];
+        if((query[1]+1) <= n )a[query[1]+1] -= query[2];
+    }
 
-    long largest = 0;
-    set<vector<int>> overLappingQueries = findOverLappingQueries(queries);
-    for(vector<int>query : overLappingQueries){
-        largest += query[2];
-   }
-   return largest;
+    for(int i = 1 ;i<=n;i++){
+        x = x + a[i];
+        if(max < x) max = x;
+    }
+
+    return max;
 }
 
 int main(){
