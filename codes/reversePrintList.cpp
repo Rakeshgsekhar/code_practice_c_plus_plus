@@ -30,6 +30,20 @@ void reversePrint(Node* head){
 
 }
 
+void reverse(Node* head){
+    Node* temp = head;
+    Node *next=NULL, *prev = NULL;
+    while(temp != NULL){
+        next = temp->next;
+        temp->next= prev;
+
+        prev = temp;
+        temp = next;
+    }
+    head = prev;
+    Traverse(head);
+}
+
 int main(){
 
 
@@ -74,4 +88,7 @@ int main(){
     Traverse(head);
     cout<<endl;
     reversePrint(head);
+    cout<<endl<<"REVERSED";
+    cout<<endl;
+    reverse(head);
 }
