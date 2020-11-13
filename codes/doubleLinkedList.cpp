@@ -31,7 +31,26 @@ void Traverse(Node* node){
 
 Node *insertToSortedList(Node *head, int data){
     Node *temp = head;
+    Node *newNode = new Node(data);
+    if(head == NULL){
+        head = newNode;
+    }else if(head->data >= newNode->data){
+        newNode->next = head;
+        newNode->next->prev = head;
+        head = newNode;
+    }else{
+        while(temp->next != NULL && temp->next->data < newNode->data){
+            temp = temp->next;
+        }
+        newNode->next = temp->next;
 
+        if(temp->next != NULL){
+            newNode->next->prev = newNode;
+        }
+        temp->next = newNode;
+        newNode->prev = temp;
+    }
+    
     return head;
 }
 
