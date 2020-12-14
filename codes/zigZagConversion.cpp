@@ -15,7 +15,6 @@ public:
         int column = (stringLength/numRows ) + numRows;
         char strMatrix[numRows][column];
         memset(strMatrix, '0', sizeof(strMatrix));
-        int positionPointer = 0;
         int stCounter = 0;
         int rowCounter = 0,columeCounter = 0;
         char sChar [stringLength];
@@ -36,8 +35,8 @@ public:
         for(int i = 0 ;i<numRows;i++){
             for(int j= 0;j<column;j++){
                 cout<<strMatrix[i][j]<<" ";
-                if(strMatrix[i][j] != '0' and strMatrix[i][j] !='\0'){
-                    result.append(string(1,strMatrix[i][j]));
+                if(strMatrix[i][j] != '0' && strMatrix[i][j] !='\0'){
+                    result += string(1,strMatrix[i][j]);
                 }
             }
             cout<<endl;
@@ -52,5 +51,6 @@ public:
 int main(){
     Solution S;
     string result = S.convert("PAYPALISHIRING",3);
+    cout<<"\n"<<"Result : "<<result<<endl;
     return 0;
 }
